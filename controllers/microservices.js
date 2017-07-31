@@ -7,5 +7,5 @@ exports.turnOnOffLed = function(req, res){
 	console.log('Client publishing.. ');
 	client.publish('LED', 'Client 1 is alive... Turning ligth! ' + Date());
 
-	client.end();
+	res.status(200).json({'message': 'Client 1 is alive... Turning ligth!'});
 }

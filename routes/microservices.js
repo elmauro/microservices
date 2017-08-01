@@ -2,5 +2,6 @@ var express = require('express');
 var router = express.Router();
 var MicroCtrl = require('../controllers/microservices');
 
-router.post('/turnOnOffLed', MicroCtrl.turnOnOffLed);
+router.post('/turnOnLed', MicroCtrl.turnOnLed);
+router.post('/turnOffLed', MicroCtrl.turnOffLed);
 module.exports = router;

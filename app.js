@@ -10,7 +10,33 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var microservices = require('./routes/microservices');
 
+var mqtt = require('mqtt');
+var socket_io    = require( "socket.io" );
 var app = express();
+var io = socket_io();
+
+app.io = io;
+
+var client  = mqtt.connect('mqtt://10.3.8.212:1883');
+client.subscribe('LED');
+
+io.on('connection', function(socket){
+  console.log("connection");
+});
+
+
+client.on('message', function(topic, message) {
+  _message =  message.toString();
+
+  switch(_message){
+      case 'turnOff':  io.sockets.emit ('turnOff', 'success');
+                          break; 
+  }
+
+});
+
+var client  = mqtt.connect('mqtt://10.3.8.212:1883');
+var _message;
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

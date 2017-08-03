@@ -28,6 +28,7 @@ exports.turnOffLed = function(req, res){
 exports.trajectory = function(io){
 	request(options, function (error, response, body) {
 	  if (!error && response.statusCode == 200) {
+	  	console.log("trajectory is working!");
 	    client.publish('LED', 'turnOnLed');
 	    io.sockets.emit ('turnOff', 'success');
 	  }

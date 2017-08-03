@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
+var api = require('./controllers/microservices');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -29,8 +30,8 @@ client.on('message', function(topic, message) {
   _message =  message.toString();
 
   switch(_message){
-      case 'turnOff':  io.sockets.emit ('turnOff', 'success');
-                          break; 
+      case 'turnOn':  api.trajectory(io);
+                      break; 
   }
 
 });

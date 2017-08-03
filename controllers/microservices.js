@@ -1,5 +1,5 @@
 var mqtt = require('mqtt')
-var client  = mqtt.connect('mqtt://10.3.8.212:1883');
+var client  = mqtt.connect('mqtt://10.3.8.231:1883');
 var request = require('request');
 var options = {
 	headers: {
